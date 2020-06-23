@@ -6,6 +6,14 @@ class QuizQuestion extends Component {
     super(props);
   }
 
+  handleClick(buttonText){
+    console.log("quiz_question pressed");
+
+    if(buttonText === this.props.quiz_question.answer){
+      this.props.showNextQuestionHandler();
+    }
+  }
+
   render() {
     return (
       <main>
@@ -15,7 +23,7 @@ class QuizQuestion extends Component {
         <section className="buttons">
           <ul>
             {this.props.quiz_question.answer_options.map((question, index) => (
-              <QuizQuestionButton key={index} button_text={question} />
+              <QuizQuestionButton key={index} button_text={question} clickHandler={this.handleClick.bind(this)}/>
             ))}
           </ul>
         </section>
